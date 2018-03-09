@@ -1,4 +1,37 @@
-const appRoot =  document.getElementById('app')
+
+
+class Visibility extends React.Component{
+    constructor(props){
+        super(props)
+        this.toggleVisibility = this.toggleVisibility.bind(this)
+        this.state = {
+            visibilit:false
+        }
+    }
+    toggleVisibility(){
+        this.setState((prevState)=>{
+            return {visibilit: !prevState.visibilit}
+        })
+    }
+    render(){
+        return(
+            <div>
+            <h1>Visibility Toggle</h1>
+            <button onClick={this.toggleVisibility}>
+            {this.state.visibilit ? 'hide ditels' : 'show diteles'}
+            </button>
+            {this.state.visibilit && (
+                <div>
+                    <p>hey. these are some details you can now see!</p>
+                </div>
+            )}
+        </div>
+        )
+    }
+}
+ReactDOM.render(<Visibility/>, document.getElementById('app'))
+
+/*const appRoot =  document.getElementById('app')
 
 let visibility = false
 const toggleVisibility = () =>{
@@ -22,4 +55,4 @@ const renderApp = () =>{
     )
     ReactDOM.render(template,appRoot)
 }
-renderApp()
+renderApp()*/
